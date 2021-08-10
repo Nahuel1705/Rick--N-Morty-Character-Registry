@@ -1,0 +1,7 @@
+.character-data{
+    display: none;
+}
+
+.character:hover ~ .character-data{
+    display: block;
+}
