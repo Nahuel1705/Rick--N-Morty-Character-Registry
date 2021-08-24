@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { fetchCharactersData } from "./services/fetchCharactersData";
 import { useEffect, useState } from "react";
 
-const API = "https://rickandmortyapi.com/api/character/?page=1";
+const API = "https://rickandmortyapi.com/api/character";
 
 function App() {
   const [data, setData] = useState({});
@@ -23,13 +23,19 @@ function App() {
     );
   };
 
+  const handlePrevious = () => {
+    const prevPage = data.info.prev.match(/\d{1,}$/)[0];
+    if (prevPage) {
+      fetchCharactersData(
+        data.info.prev.replace(/\d{1,}$/, `${prevPage - 4}`)
+      ).then((fetchedData) => setData(fetchedData));
+    }
+  };
   const handleShowData = (character) => {
     setShowCharacterData(!showCharacterData);
-    debugger;
     !showCharacterData
       ? (document.body.style.overflowY = "hidden")
       : (document.body.style.overflowY = "visible");
-    debugger;
     setCharacterData(character);
   };
 
@@ -47,6 +53,7 @@ function App() {
             />
           ))}
       </div>
+      <button onClick={handlePrevious}>Previous</button>
       <button onClick={handelNext}>Next</button>
       {showCharacterData && <CharacterData character={characterData} />}
     </>

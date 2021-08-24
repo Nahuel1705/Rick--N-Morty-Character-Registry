@@ -16,18 +16,29 @@ h1 {
 }
 
 .sheet {
-  background-color: rgb(255, 243, 218);
-  border-radius: 4px;
+  background-color: #ffffff;
+  border-radius: 2vw;
   max-width: 80vw;
   padding: 3vh;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
-.character-image {
+.character-profile {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+}
+
+.character-cover {
   text-align: center;
   margin-right: 1.5vw;
+}
+
+.character-profile-image {
+  border: solid 4px #000000;
+  border-radius: 1vw;
 }
 
 .character-data {
@@ -36,4 +47,8 @@ h1 {
   justify-content: space-between;
   flex-direction: column;
   margin-bottom: 5vh;
+}
+
+.list-of-episodes {
+  width: 50vw;
 }
