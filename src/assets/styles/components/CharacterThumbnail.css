@@ -38,6 +38,7 @@
 
 .character-container:hover .character-overlay {
   opacity: 1;
+  cursor: pointer;
 }
 
 .character-container:hover .overlay-text {

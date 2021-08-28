@@ -15,11 +15,12 @@ const CharacterData = (props) => {
   return (
     <div className="sheet-background">
       <div className="sheet">
+        <div className="character-header">
+          <h1>{character.name}</h1>
+          <button className="close" onClick={props.toggleData}>X</button>
+        </div>
         <div className="character-profile">
-          <div className="character-cover ">
-            <img className="character-profile-image" src={character.image} alt={character.name} />
-            <h1>{character.name}</h1>
-          </div>
+          <img className="character-profile-image" src={character.image} alt={character.name} />  
           <div className="character-data text-capitalize">
             <h3>
               <strong>Gender: </strong>{character.gender}
@@ -42,12 +43,6 @@ const CharacterData = (props) => {
               {character.location.name}
             </h3>
           </div>
-        </div>
-        <div className="row list-of-episodes">
-          {
-            listOfEpisodes?.length > 0 &&
-            listOfEpisodes.map(episode => <EsisodesListRow episode={episode}/>)
-          }
         </div>
       </div>
     </div>

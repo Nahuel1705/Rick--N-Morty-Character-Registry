@@ -10,12 +10,18 @@ const API = "https://rickandmortyapi.com/api/character";
 
 function App() {
   const [data, setData] = useState({});
-  const [showCharacterData, setShowCharacterData] = useState(false);
+  const [toggleCharacterData, setToggleCharacterData] = useState(false);
   const [characterData, setCharacterData] = useState({});
 
   useEffect(() => {
     fetchCharactersData(API).then((fetchedData) => setData(fetchedData));
   }, []);
+
+  useEffect(() => {
+    toggleCharacterData
+      ? (document.body.style.overflowY = "hidden")
+      : (document.body.style.overflowY = "visible");
+  }, [toggleCharacterData]);
 
   const handelNext = () => {
     fetchCharactersData(data.info.next).then((fetchedData) =>
@@ -31,17 +37,14 @@ function App() {
       ).then((fetchedData) => setData(fetchedData));
     }
   };
-  const handleShowData = (character) => {
-    setShowCharacterData(!showCharacterData);
-    !showCharacterData
-      ? (document.body.style.overflowY = "hidden")
-      : (document.body.style.overflowY = "visible");
+  const handleToggleData = (character) => {
+    setToggleCharacterData(!toggleCharacterData);
     setCharacterData(character);
   };
 
   return (
     <>
-      {!showCharacterData && <Header />}
+      {!toggleCharacterData && <Header />}
 
       <div className="container row p-0 mx-auto">
         {data?.results?.length > 0 &&
@@ -49,13 +52,22 @@ function App() {
             <CharacterThumbnail
               key={character.id}
               character={character}
-              showData={handleShowData}
+              toggleData={handleToggleData}
             />
           ))}
       </div>
-      <button onClick={handlePrevious}>Previous</button>
-      <button onClick={handelNext}>Next</button>
-      {showCharacterData && <CharacterData character={characterData} />}
+      <button className="btn-page prev" onClick={handlePrevious}>
+        Previous
+      </button>
+      <button className="btn-page next" onClick={handelNext}>
+        Next
+      </button>
+      {toggleCharacterData && (
+        <CharacterData
+          toggleData={handleToggleData}
+          character={characterData}
+        />
+      )}
     </>
   );
 }

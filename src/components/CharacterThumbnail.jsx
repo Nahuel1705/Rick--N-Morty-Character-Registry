@@ -9,7 +9,7 @@ const CharacterThumbnail = (props) => {
       <div className="col-2 character">
         <div className="character-container">
           <div
-            onClick={() => props.showData(character)}
+            onClick={() => props.toggleData(character)}
             className="character-overlay"
           >
             <div className="overlay-text">
