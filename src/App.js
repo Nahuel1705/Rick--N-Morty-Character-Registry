@@ -5,6 +5,8 @@ import "./assets/styles/global.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { fetchCharactersData } from "./services/fetchCharactersData";
 import { useEffect, useState } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import sync from "css-animation-sync";
 
 const API = "https://rickandmortyapi.com/api/character";
 
@@ -27,14 +29,17 @@ function App() {
     fetchCharactersData(data.info.next).then((fetchedData) =>
       setData(fetchedData)
     );
+    sync("active-pagination");
   };
 
   const handlePrevious = () => {
     const prevPage = data.info.prev.match(/\d{1,}$/)[0];
-    if (prevPage) {
+
+    if (prevPage !== 2) {
       fetchCharactersData(
         data.info.prev.replace(/\d{1,}$/, `${prevPage - 4}`)
       ).then((fetchedData) => setData(fetchedData));
+      sync("active-pagination");
     }
   };
   const handleToggleData = (character) => {
@@ -46,7 +51,7 @@ function App() {
     <>
       {!toggleCharacterData && <Header />}
 
-      <div className="container row p-0 mx-auto">
+      <div className="container row p-0 mx-auto main-container">
         {data?.results?.length > 0 &&
           data.results.map((character) => (
             <CharacterThumbnail
@@ -56,12 +61,18 @@ function App() {
             />
           ))}
       </div>
-      <button className="btn-page prev" onClick={handlePrevious}>
-        Previous
-      </button>
-      <button className="btn-page next" onClick={handelNext}>
-        Next
-      </button>
+      <IoIosArrowBack
+        className={`btn-page prev ${
+          data?.info?.prev.match(/\d{1,}$/)[0] !== "2"
+            ? "active-pagination"
+            : ""
+        }`}
+        onClick={handlePrevious}
+      />
+      <IoIosArrowForward
+        className="btn-page next active-pagination"
+        onClick={handelNext}
+      />
       {toggleCharacterData && (
         <CharacterData
           toggleData={handleToggleData}

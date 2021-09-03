@@ -23,3 +23,42 @@ p {
   height: 100vh;
   width: 100vw;
 }
+
+.btn-page {
+  opacity: 0%;
+  border: none;
+  position: fixed;
+  top: 50%;
+  background: none;
+  padding: 0%;
+  display: flex;
+  height: 7vw;
+  width: 7vw;
+  color: aliceblue;
+}
+
+.prev {
+  left: 1vw;
+}
+
+.next {
+  right: 1vw;
+}
+
+.active-pagination {
+  opacity: 100%;
+  animation: active-pagination 300ms ease-in 0ms infinite alternate;
+}
+
+.active-pagination:hover {
+  cursor: pointer;
+}
+
+@keyframes active-pagination {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}

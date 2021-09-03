@@ -12,15 +12,15 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.5s ease-in-out;
   overflow: hidden;
 }
 
 .sheet {
-  background-color: #ffffff;
+  background-color: hsl(0, 0%, 100%);
   border-radius: 2vw;
   max-width: 55vw;
   min-width: 45vw;
+  height: 90vh;
   padding: 3vh;
   display: flex;
   flex-direction: column;
@@ -34,24 +34,40 @@ h3 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5%;
+  margin-bottom: 3vh;
 }
 
 .close {
+  background-color: hsl(359, 100%, 44%);
+  border: 2px solid hsl(210, 11%, 15%);
+  padding: 0px;
+  margin: 0%;
+  border-radius: 5px;
   position: absolute;
   right: 0%;
   top: 0%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.close:hover {
+  background-color: hsl(359, 100%, 38%);
+}
+
+.close:active {
+  background-color: hsl(359, 100%, 33%);
 }
 
 .character-profile {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
 }
 
 .character-profile-image {
-  border: solid 4px #000000;
+  border: solid 4px #212529;
   border-radius: 1vw;
 }
 
