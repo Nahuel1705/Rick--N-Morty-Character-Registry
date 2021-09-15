@@ -20,7 +20,7 @@ h3 {
   border-radius: 2vw;
   max-width: 55vw;
   min-width: 45vw;
-  height: 90vh;
+  max-height: 90vh;
   padding: 3vh;
   display: flex;
   flex-direction: column;
@@ -67,7 +67,7 @@ h3 {
 }
 
 .character-profile-image {
-  border: solid 4px #212529;
+  border: solid 4px hsl(210, 11%, 15%);
   border-radius: 1vw;
 }
 

@@ -5,11 +5,12 @@ import '../assets/styles/components/SeasonsNav.css'
 import "bootstrap/dist/css/bootstrap.css";
 
 const SeasonsNav = (props) => {
+  /* Aumenta en 1 la profundidad del array de episodios generando un subarray por cada temporada*/
   const episodes = props.episodes
     .map((v) => ({
       id: v.id,
       season: 'Season ' + v.episode.match(/\d{1,}/).toString(),
-      episode: v.episode.match(/\d{1,}$/).toString(),
+      episodeNumber: v.episode.match(/\d{1,}$/).toString(),
       name: v.name,
       releaseDate: v.air_date,
     }))
@@ -21,26 +22,37 @@ const SeasonsNav = (props) => {
       return result;
     }, {});
 
+  /* Retorna el array de tabs segun las seasons */
   const formatTabs = () => {
     const tabs = [];
     for (const season in episodes) {
       console.log(episodes);
       tabs.push(<TabPanel>
-        {episodes[season].map((v) => (
-          <div className="row">
-            <div className="col-1">{v.episode}</div>
-            <div className="col-8">{v.name}</div>
-            <div className="col-3">{v.releaseDate}</div>
-          </div>
-        ))}
+        <table>
+          <thead className="episodes-table__header">
+            <tr>
+              <th className="episodes-table__header--number">Ep.</th>
+              <th className="episodes-table__header--title">Title</th>
+              <th className="episodes-table__header--release-date">Release date</th>
+            </tr>
+          </thead>
+          <tbody className="episodes-table__body">
+            {episodes[season].map(episode => (
+              <tr>
+                <td className="episodes-table__col--number">{episode.episodeNumber}</td>
+                <td className="episodes-table__col--title">{episode.name}</td>
+                <td className="episodes-table__col--release-date">{episode.releaseDate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </TabPanel>)
-    }
-    console.log(tabs);
+      }
     return tabs;
   }
 
   return (
-    <Tabs className="tabs-container">
+    <Tabs>
       <TabList>
         {Object.keys(episodes).map((v) => <Tab>{v}</Tab>)}
       </TabList>

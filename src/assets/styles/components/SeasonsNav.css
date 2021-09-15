@@ -1,33 +1,58 @@
-.tabs-container {
+.react-tabs {
+  margin-top: 2.5%;
   width: 100%;
 }
+
 .react-tabs__tab-list {
-  margin-top: 3vh;
-  margin-bottom: 0%;
+  margin: 0%;
+  padding: 0%;
   border: none;
-  user-select: none;
 }
 
 .react-tabs__tab {
+  margin-right: 0.5%;
+  padding: 0% 1% 0% 1%;
   font-size: x-large;
-  padding-bottom: 5px;
-  background-color: hsl(210, 11%, 15%);
-  color: hsl(0, 0%, 100%);
-  margin: 0px 2px 0px 2px;
+  font-weight: 500;
   border: none;
-  border-radius: 5px 5px 0 0;
-  transition: all.2s ease-in-out;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: solid 0.7vh hsl(210, 11%, 15%);
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(210, 11%, 15%);
+  transition: all 0.2s ease-in-out;
 }
 
 .react-tabs__tab--selected {
-  padding-bottom: 0px;
   border: none;
-  border-radius: 5px 5px 0 0;
-  border-bottom: 5px solid hsl(85, 57%, 55%);
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: solid 0.7vh hsl(85, 57%, 55%);
+  transition: all 0.2s ease-in-out;
 }
 
-.react-tabs__tab-panel {
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0 2.5% 0 2.5%;
+th {
+  font-size: larger;
+}
+
+td {
+  font-size: large;
+}
+
+tr {
+  width: 100%;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+table {
+  width: 100%;
+}
+
+tbody {
+  transition: all 0.2s ease-in-out;
+}
+
+.episodes-table__header--release-date,
+.episodes-table__col--release-date {
+  text-align: right;
 }
