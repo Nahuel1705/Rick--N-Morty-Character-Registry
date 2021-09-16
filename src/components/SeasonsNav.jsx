@@ -28,24 +28,24 @@ const SeasonsNav = (props) => {
     for (const season in episodes) {
       console.log(episodes);
       tabs.push(<TabPanel>
-        <table>
-          <thead className="episodes-table__header">
-            <tr>
-              <th className="episodes-table__header--number">Ep.</th>
-              <th className="episodes-table__header--title">Title</th>
-              <th className="episodes-table__header--release-date">Release date</th>
-            </tr>
-          </thead>
-          <tbody className="episodes-table__body">
+        <div className="custom-table">
+          <div className="table-head">
+            <div className="table-row">
+              <div className="table-data table-data__episode-number">Ep.</div>
+              <div className="table-data table-data__episode-title">Title</div>
+              <div className="table-data table-data__episode-release-date">Release date</div>
+            </div>
+          </div>
+          <div className="table-body">
             {episodes[season].map(episode => (
-              <tr>
-                <td className="episodes-table__col--number">{episode.episodeNumber}</td>
-                <td className="episodes-table__col--title">{episode.name}</td>
-                <td className="episodes-table__col--release-date">{episode.releaseDate}</td>
-              </tr>
+              <div className="table-row">
+                <div className="table-data table-data__episode-number">{episode.episodeNumber}</div>
+                <div className="table-data table-data__episode-title">{episode.name}</div>
+                <div className="table-data table-data__episode-release-date">{episode.releaseDate}</div>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </TabPanel>)
       }
     return tabs;

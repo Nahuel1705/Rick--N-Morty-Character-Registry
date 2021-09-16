@@ -29,30 +29,55 @@
   transition: all 0.2s ease-in-out;
 }
 
-th {
+.custom-table,
+.table-head,
+.table-body,
+.table-row {
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+}
+
+.custom-table,
+.table-head,
+.table-body {
+  flex-direction: column;
+}
+
+.table-head,
+.table-body {
+  padding: 6px 6px 6px 6px;
+}
+
+.custom-table {
+  margin-top: 1vh;
+}
+
+.table-head {
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(210, 11%, 15%);
+  font-size: x-large;
+  font-weight: 400;
+  overflow-y: scroll;
+}
+
+.table-body {
   font-size: larger;
+  max-height: 20vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-weight: 500;
 }
 
-td {
-  font-size: large;
+.table-data__episode-number {
+  width: 5%;
 }
 
-tr {
-  width: 100%;
-}
-tr:nth-child(even) {
-  background-color: #dddddd;
+.table-data__episode-title {
+  width: 70%;
 }
 
-table {
-  width: 100%;
-}
-
-tbody {
-  transition: all 0.2s ease-in-out;
-}
-
-.episodes-table__header--release-date,
-.episodes-table__col--release-date {
+.table-data__episode-release-date {
+  width: 25%;
   text-align: right;
 }
